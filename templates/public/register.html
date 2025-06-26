@@ -1,0 +1,27 @@
+{% extends "public/layout.html" %}
+
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}"> {% endblock %}
+
+{% block main %}
+  <main class="container py-5 text-center">
+    {% if message %}
+      <div class="alert alert-danger text-center" role="alert" style="margin-top: 30px; margin-bottom: 30px;">
+        {{ message }}
+      </div>
+    {% endif %}
+    <form action="/register" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control" style="display: inline-block; width: auto;" name="username" placeholder="Username" type="text" required>
+        </div>
+        <div class="mb-3">
+            <input class="form-control" style="display: inline-block; width: auto;" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="mb-3">
+            <input class="form-control" style="display: inline-block; width: auto;" name="confirmation" placeholder="Confirm password" type="password">
+        </div>
+        <button action="/register" method="post" class="btn btn-primary" type="submit">Register</button>
+    </form>
+  </main>
+{% endblock %}
+
+

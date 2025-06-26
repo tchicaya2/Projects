@@ -1,0 +1,47 @@
+{% extends "public/layout.html" %}
+
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+{% endblock %}
+{% block script %} <script src="{{ url_for('static', filename='quizlogic.js') }}"></script> {% endblock %}
+
+{% block main %}
+  <main class="jurisquiz_main" style="margin: 1vh;">
+    <div id="quiztype" hidden>public</div>
+    <u><h2 id="domaine"></h2></u>
+    <div style="display: flex; justify-content: left"><h4 style="background-color: lightblue; border-radius: 5px; border: 2px solid black; margin-left: 15%; width: 100px;">Score : <span id="score"></span></h4></div>
+    <div style="display: flex; justify-content: center"><h4>Essais restants : <span id="essais"></span></h4></div>
+    <div style="display: flex; justify-content: center">
+      <h1 id="feedback" style="width: 45%;" role="alert"></h1>
+    </div>
+    <h3 style="padding-top: 20px;"><strong>Quel est le nom de l'arrêt duquel résulte le principe suivant : </strong></h3>
+    <h4 class="attendu" id="principe"><strong></strong></h4>
+    <div class="fin" style="height: 80vh;">
+      <h3 style="margin-top: 10%;">Tu as répondu à toutes les questions du quiz !</h3>
+      <div style="margin-top: 25px; display: flex; align-content: space-evenly; align-items: center; text-align: center; position: absolute; left: 50%; transform:translate(-50%)">
+        <h3>Ton score : <span id="final_score"></span></h3>
+      </div>
+      <div class="restart">
+        <a href="/choix" class="endbuttons">Rejouer</a>
+        <a href="/" class="endbuttons">Menu principal</a>
+      </div>
+    </div>
+    <div class="noidea" id="les_réponses">
+      <div class="reponses">
+        <input type="radio" class="choix" value="1"/><label id="r1" class="réponse"></label>
+      </div>
+      <div class="reponses">
+        <input type="radio" class="choix" value="2"/><label id="r2" class="réponse"></label>
+      </div>
+      <div class="reponses">
+        <input type="radio" class="choix" value="3"/><label id="r3" class="réponse"></label>
+      </div>
+      <div class="reponses">
+        <input type="radio" class="choix" value="4"/><label id="r4" class="réponse"></label>
+      </div>
+    </div>
+
+    <button class="suivant" id="suivant" type="submit" value="Suivant">Suivant</button>
+
+  </main>
+{% endblock %}

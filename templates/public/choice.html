@@ -1,0 +1,13 @@
+{% extends "public/layout.html" %}
+
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}"> {% endblock %}
+{% block script %} <script src="{{ url_for('static', filename='choice.js') }}"></script> {% endblock %}
+
+{% block main %}
+  <main class="jurisquiz_main">
+    <div id="pagetype" hidden>public</div>
+    <h3 class="fw-bold" style="padding-top: 40px;"><u>Choisissez une matière</u></h3>
+    <div class="noidea" id="options"></div>
+  </main>
+{% endblock %}
+

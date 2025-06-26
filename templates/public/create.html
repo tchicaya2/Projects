@@ -1,0 +1,41 @@
+{% extends "public/layout.html" %}
+
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}"> {% endblock %}
+
+{% block main %}
+  <main class="container py-5 text-center">
+    {% if message %}
+      <div id="flash-message" class="alert alert-success text-center" role="alert" style="margin-top: 50px;">
+        {{ message }}
+      </div>
+    {% endif %}
+    <form action="/create" method="post">
+        <div class="mb-3">
+            <label for="message" class="form-label">Question</label>
+            <textarea class="form-control" name="principe" rows="5" placeholder="Entrez le principe" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Réponse</label>
+            <textarea class="form-control" name="référence" rows="5" placeholder="Entrez la référence du principe" required></textarea>
+        </div>
+        <button action="/create" method="post" class="btn btn-primary" style="background-color: lightgreen; border: 1px gray; color: black" type="submit">Enregistrer</button>
+    </form>
+    <a href="/private_choice"><button class="btn btn-primary mt-4">Voir mes Quiz</button></a>
+  </main>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const flash = document.getElementById("flash-message");
+    if (flash) {
+      setTimeout(() => {
+        flash.style.transition = "opacity 0.5s";
+        flash.style.opacity = 0;
+
+        setTimeout(() => flash.remove(), 500); // supprime l'élément du DOM
+      }, 3000); // délai avant disparition (3 secondes)
+    }
+  });
+</script>
+{% endblock %}
+
+

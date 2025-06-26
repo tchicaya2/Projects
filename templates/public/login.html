@@ -1,0 +1,23 @@
+{% extends "public/layout.html" %}
+
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}"> {% endblock %}
+
+{% block main %}
+  <!-- Styles Bootstrap 5 manuellement convertis pour les utiliser malgré un header incluant Bootstrap 3. ChatGPT m'a donné les correspondances de classes -->
+  <main class="container text-center py-5">
+    {% if message %}
+      <div class="alert alert-info text-center" role="alert" style="margin-top: 50px;">
+        {{ message }}
+      </div>
+    {% endif %}
+    <form action="/login" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control" style="display: inline-block; width: auto;" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control" style="display: inline-block; width: auto;" name="password" placeholder="Password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Log In</button>
+    </form>
+  </main>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "public/layout.html" %}
+
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}"> {% endblock %}
+{% block script %} <script src="{{ url_for('static', filename='choice.js') }}"></script> {% endblock %}
+
+{% block main %}
+  <main class="jurisquiz_main">
+    <div id="pagetype" hidden>privé</div>
+    <h3 class="fw-bold" style="padding-top: 40px;"><u>Choisissez un de vos Quiz</u></h3>
+    {% if response %}
+      <div class="noidea" id="options"></div>
+    {% else %}
+      <div class="alert alert-info text-center" role="alert" style="margin-top: 50px;">
+        Vous n'avez pas encore créé de quiz. Vous pouvez en créer un <a href="/create">ici</a> !
+      </div>
+    {% endif %}
+
+  </main>
+{% endblock %}
+

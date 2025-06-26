@@ -1,0 +1,61 @@
+{% extends "public/layout.html" %}
+
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}"> {% endblock %}
+
+{% block title %}
+    Profil
+{% endblock %}
+
+{% block main %}
+    <div class="section" style="margin-top: 5%;">
+
+                <h2>Résultats pour {{ nom }}</h2>
+                <table>
+                    <thead>
+                        {% if rows %}
+                            <tr>
+                                <th>Matière</th>
+                                <th>Questions Posées</th>
+                                <th>Réponses justes</th>
+                                <th>Pourcentage de réussite</th>
+                            </tr>
+                        {% endif %}
+                    </thead>
+                    <tbody>
+
+                        {% if rows %}
+                            {% for row in rows %}
+                        <!-- TODO: Loop through the database entries to display them in this table -->
+                            <tr>
+                                <td>{{ row[2] }}</td>
+                                <td>{{ row[3] }}</td>
+                                <td>{{ row[4] }}</td>
+                                <td>
+                                    {% if row[3] != 0 %}
+                                        {{ ((row[4] / row[3]) * 100) | round }} %
+                                    {% else %}
+                                        0 %
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <div class="alert alert-info text-center" role="alert" style="margin-top: 50px;">
+                                    Rien à afficher ici pour l'instant. <a href="/choix">Jouez à un quiz</a> pour commencer à voir vos résultats !
+                                </div>
+                            </tr>
+                        {% endif %}
+
+                    </tbody>
+                </table>
+        </div>
+{% endblock %}
+
+
+
+
+
+
+
+

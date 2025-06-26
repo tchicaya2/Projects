@@ -1,0 +1,25 @@
+{% extends "public/layout.html" %}
+
+{% block style %} <link rel="stylesheet" href="{{ url_for('static', filename='styling.css') }}"> {% endblock %}
+
+{% block main %}
+  <main class="main_principal">
+    {% if message %}
+      <div class="alert alert-info text-center" role="alert" style="margin-top: 50px;">
+        {{ message }}
+      </div>
+    {% endif %}
+    <div class="container">
+      <h2><strong>Bienvenue sur Law and Code !</strong></h2>
+    </div>
+
+    <div class="conteneurbouttons">
+      <button class="bouttons"><a href="/choix">Le Jurisquiz</a></button>
+      <button class="bouttons"><a href="/create">Créer mon Quiz</a></button>
+      <button class="bouttons"><a href="/about">À Propos</a></button>
+    </div>
+  </main>
+{% endblock %}
+
+
+
